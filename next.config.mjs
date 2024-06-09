@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: [
-            'assets.aceternity.com',
-            'pbs.twimg.com',
-            'www.freepik.com',
-            'img.freepik.com',
-
-        ],
-      },
+  images: {
+    domains: [
+      "ui.aceternity.com",
+      "kinde.com"
+    ], // Tambahkan hostname di sini
+  },
 };
 
 export default nextConfig;
