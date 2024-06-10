@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+const {nextui} = require("@nextui-org/react");
 
 const {
   default: flattenColorPalette,
@@ -13,6 +14,7 @@ const config = {
     './src/**/*.{ts,tsx}',
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     './node_modules/preline/preline.js',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
 	],
   prefix: "",
   theme: {
@@ -111,6 +113,7 @@ const config = {
     require("tailwindcss-animate"),
     require('preline/plugin'),
     addVariablesForColors,
+    nextui(),
 
     
   ],

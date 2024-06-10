@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Provider from "@/providers/redux-provider";
 import { Toaster } from "sonner";
+import { NextUIProvider } from "@nextui-org/system";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,11 +40,10 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Toaster
-            position="top-center"
-            richColors={true}
-          />
-          <Provider>{children}</Provider>
+          <NextUIProvider>
+            <Toaster position="top-center" richColors={true} />
+            <Provider>{children}</Provider>
+          </NextUIProvider>
         </ThemeProvider>
       </body>
     </html>
