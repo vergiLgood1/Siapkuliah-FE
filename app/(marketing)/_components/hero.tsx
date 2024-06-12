@@ -1,149 +1,63 @@
 "use client";
+
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import React from "react";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import Image from "next/image";
+
+const heroes = [
+  {
+    title: "Find the path to your dream college",
+    subtitle:
+      "A study buddy who is ready to support you in achieving your college dreams, both at home and abroad. With various intensive programs such as assessment, counseling, and tes preparation that you can take at any time according to your needs.",
+    bannerImage: "",
+    buttonText: "Talk to us",
+    buttonText2: "Get started",
+  },
+];
 
 export function Hero() {
   return (
-    <div className="flex flex-col overflow-hidden">
-      <ContainerScroll
-        titleComponent={
-          <>
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
-              Unleash the power of creative education platform <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Siap Kuliah
-              </span>
-            </h1>
-          </>
-        }
-      >
-        <Image
-          src={`/assets/images/download.jpg`}
-          alt="hero"
-          height={720}
-          width={1400}
-          className="mx-auto rounded-2xl object-fit h-full object-left-top"
-          draggable={false}
-        />
-      </ContainerScroll>
+    <div className="flex w-full min-h-screen items-center justify-center my-12">
+      {heroes.map((hero) => (
+        <MaxWidthWrapper>
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="relative flex flex-col gap-4 items-center justify-center px-4"
+          >
+            <div className="text-3xl md:text-7xl font-medium dark:text-white text-center md:max-w-3xl">
+              {hero.title}
+            </div>
+            <div className="font-normal text-base md:text-2xl dark:text-neutral-200 py-4 text-center md:max-w-lg">
+              A study buddy who is ready to support you in achieving your
+              college dreams, both at home and abroad.
+            </div>
+            <div className="flex items-center justify-center gap-x-4 mt-4">
+              <div>
+                <Button 
+                size="lg"
+                className="h-12 w-fit text-[16px]">
+                  {hero.buttonText2}
+                </Button>
+              </div>
+              <div>
+                <Button 
+                variant="ghost"
+                size="lg"
+                className="h-12 w-fit text-[16px]">
+                  {hero.buttonText}
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </MaxWidthWrapper>
+      ))}
     </div>
   );
 }
-
-export const users = [
-  {
-    name: "Manu Arora",
-    designation: "Founder, Algochurn",
-    image: "https://picsum.photos/id/10/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Sarah Singh",
-    designation: "Founder, Sarah's Kitchen",
-    image: "https://picsum.photos/id/11/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "John Doe",
-    designation: "Software Engineer, Tech Corp",
-    image: "https://picsum.photos/id/12/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Jane Smith",
-    designation: "Product Manager, Innovate Inc",
-    image: "https://picsum.photos/id/13/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Robert Johnson",
-    designation: "Data Scientist, DataWorks",
-    image: "https://picsum.photos/id/14/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Emily Davis",
-    designation: "UX Designer, DesignHub",
-    image: "https://picsum.photos/id/15/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Michael Miller",
-    designation: "CTO, FutureTech",
-    image: "https://picsum.photos/id/16/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Sarah Brown",
-    designation: "CEO, StartUp",
-    image: "https://picsum.photos/id/17/300/300",
-  },
-  {
-    name: "James Wilson",
-    designation: "DevOps Engineer, CloudNet",
-    image: "https://picsum.photos/id/18/300/300",
-    badge: "Something",
-  },
-  {
-    name: "Patricia Moore",
-    designation: "Marketing Manager, MarketGrowth",
-    image: "https://picsum.photos/id/19/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Richard Taylor",
-    designation: "Frontend Developer, WebSolutions",
-    image: "https://picsum.photos/id/20/300/300",
-  },
-  {
-    name: "Linda Anderson",
-    designation: "Backend Developer, ServerSecure",
-    image: "https://picsum.photos/id/21/300/300",
-  },
-  {
-    name: "William Thomas",
-    designation: "Full Stack Developer, FullStack",
-    image: "https://picsum.photos/id/22/300/300",
-    badge: "Badger",
-  },
-  {
-    name: "Elizabeth Jackson",
-    designation: "Project Manager, ProManage",
-    image: "https://picsum.photos/id/23/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "David White",
-    designation: "Database Administrator, DataSafe",
-    image: "https://picsum.photos/id/24/300/300",
-    badge: "Advocate",
-  },
-  {
-    name: "Jennifer Harris",
-    designation: "Network Engineer, NetConnect",
-    image: "https://picsum.photos/id/25/300/300",
-  },
-  {
-    name: "Charles Clark",
-    designation: "Security Analyst, SecureIT",
-    image: "https://picsum.photos/id/26/300/300",
-  },
-  {
-    name: "Susan Lewis",
-    designation: "Systems Analyst, SysAnalyse",
-    image: "https://picsum.photos/id/27/300/300",
-  },
-  {
-    name: "Joseph Young",
-    designation: "Mobile Developer, AppDev",
-    image: "https://picsum.photos/id/28/300/300",
-    badge: "Mentor",
-  },
-  {
-    name: "Margaret Hall",
-    designation: "Quality Assurance, BugFree",
-    image: "https://picsum.photos/id/29/300/300",
-    badge: "Developer",
-  },
-];

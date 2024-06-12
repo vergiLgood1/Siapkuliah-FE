@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+.row {
+  display: block;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20vh 0;
+}
+
+.WebGLImage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  outline: 2px dashed turquoise;
+
+  aspect-ratio: 16/10;
+  margin: 10vw;
+  width: 80vw;
+}
+
+.Marquee {
+  white-space: nowrap;
+  padding: 0vw 0;
+  overflow: hidden;
+}
+.Marquee > div {
+  will-change: transform;
+}
+.Marquee h1 {
+  margin: 0;
+  line-height: 1;
+  font-size: 30vw;
+}
+
+/* CSS Marquee */
+:root {
+  --gap: 14em;
+  --duration: 20s;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(calc(-150% - var(--gap)));
+  }
+}
+
+.marqueeWrapper {
+  overflow: hidden;
+  background: black;
+  color: white;
+}
+
+/* https://ryanmulligan.dev/blog/css-marquee/ */
+.marquee {
+  display: flex;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--gap);
+  /* css marquee */
+  will-change: transform;
+  animation: scroll var(--duration) linear infinite;
+}
+.marquee.reverse .marquee__content {
+  animation-direction: reverse;
+}
+
+/* .marquee__content:nth-child(1) {
+  color: green;
+}
+.marquee__content:nth-child(2) {
+  color: red;
+} */
+
+.marquee__content h2 {
+  font-size: 30vw;
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
