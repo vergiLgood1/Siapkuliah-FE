@@ -18,36 +18,36 @@ import { Logo } from "./logo"
 const components: { title: string; href: string; description: string }[] = [
     {
         title: "Counseling",
-        href: "/",
+        href: "/counseling",
         description:
           "A modal dialog that interrupts the user with important content and expects a response.",
       },
       {
         title: "Try out",
-        href: "/",
+        href: "/tryout",
         description:
           "For sighted users to preview content available behind a link.",
       },
       {
         title: "Scholarship",
-        href: "/",
+        href: "/schoolarship",
         description:
           "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
       },
       {
         title: "SNBT",
-        href: "/",
+        href: "/snbt",
         description: "Visually or semantically separates content.",
       },
       {
         title: "University",
-        href: "/",
+        href: "/university",
         description:
           "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
       },
       {
         title: "Tips & trick",
-        href: "/",
+        href: "/tips-trick",
         description:
           "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
       },
@@ -62,30 +62,30 @@ const abouts: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Contact",
-    href: "/",
+    href: "/contact",
     description:
       "For sighted users to preview content available behind a link.",
   },
   {
     title: "Team",
-    href: "/",
+    href: "/team",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
   },
   {
     title: "Support",
-    href: "/",
+    href: "/support",
     description: "Visually or semantically separates content.",
   },
   {
     title: "Work",
-    href: "/",
+    href: "/work",
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
   },
   {
     title: "News",
-    href: "/",
+    href: "/news",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
@@ -162,7 +162,7 @@ export function NavigationsMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/customers" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Customers
             </NavigationMenuLink>

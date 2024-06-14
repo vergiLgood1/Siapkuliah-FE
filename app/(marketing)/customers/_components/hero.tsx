@@ -7,9 +7,14 @@ import {
   HeroSub,
   HeroTitle,
 } from "@/components/hero";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import PricingCard from "./pricing-card";
+import {
+  IconBrandAirbnb,
+  IconBrandAirtable,
+  IconBrandAmazon,
+  IconBrandAmd,
+  IconBrandAmongUs,
+} from "@tabler/icons-react";
+import Brand from "../../_components/brand";
 
 const Heroes = [
   {
@@ -55,37 +60,38 @@ const Heroes = [
     bannerImage: "",
     buttonText: "Join us now",
     footer: [
-   
-  ],
+      <IconBrandAmazon />,
+      <IconBrandAirbnb />,
+      <IconBrandAmongUs />,
+      <IconBrandAirtable />,
+      <IconBrandAmd />,
+    ],
     isActive: true,
     href: "#",
     category: "Customer",
   },
 ];
 
-
-const PricingHero = () => {
+const CustomersHero = () => {
   return (
     <>
       <div className="flex w-full items-center justify-center">
-        {Heroes.filter((item) => item.isActive && item.category === "Pricing").map((item) => (
-          <Hero className="m-0 min-h-fit lg:py-40">
+        {Heroes.filter(
+          (item) => item.isActive && item.category === "Customer"
+        ).map((item) => (
+          <Hero className="m-0 min-h-fit lg:py-40 ">
             <HeroTitle>{item.title}</HeroTitle>
-            <HeroSub className="text-xs md:text-sm font-medium">
+            <HeroSub className="text-xs md:text-sm font-medium my-8 ">
               {item.subtitle}
             </HeroSub>
-            <HeroButton>
-              <Link href={item.href}>
-                <Button>{item.buttonText}</Button>
-              </Link>
-            </HeroButton>
-            <HeroFooter className="text-sm">{item.footer}</HeroFooter>
+            <HeroFooter className="max-w-full md:pb-28 border-b-4 border-[#F5F5F5] ">
+              <Brand />
+            </HeroFooter>
           </Hero>
         ))}
       </div>
-      <PricingCard />
     </>
   );
 };
 
-export default PricingHero;
+export default CustomersHero;

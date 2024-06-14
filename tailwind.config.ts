@@ -1,21 +1,25 @@
-import type { Config } from "tailwindcss"
-const {nextui} = require("@nextui-org/react");
+import type { Config } from "tailwindcss";
+const { nextui } = require("@nextui-org/react");
+const plugin = require('tailwindcss/plugin');
+
+const clampY = 'clamp(1.25rem,20vw,6.25rem)';
+const clampX = 'clamp(1.25rem,20vw,6.25rem)';
 
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
- 
+
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    './node_modules/preline/preline.js',
+    "./node_modules/preline/preline.js",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -62,6 +66,10 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      spacing: {
+        'clamp-x': clampX,
+        'clamp-y': clampY,
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -88,46 +96,62 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'spin-slow': 'spin 3s linear infinite',
+        "spin-slow": "spin 3s linear infinite",
         aurora: "aurora 60s linear infinite",
       },
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
       },
       spectRatio: {
-        '1273/633': '1273 / 633',
+        "1273/633": "1273 / 633",
       },
       inset: {
-        '11.8%': '11.8%',
-        '23%': '23%',
+        "11.8%": "11.8%",
+        "23%": "23%",
       },
       scale: {
-        '80': '0.8',
-        '60': '0.6',
-        '40': '0.4',
-        '20': '0.2',
+        "80": "0.8",
+        "60": "0.6",
+        "40": "0.4",
+        "20": "0.2",
       },
     },
   },
   plugins: [
     require("tailwindcss-animate"),
-    require('preline/plugin'),
+    require("preline/plugin"),
     addVariablesForColors,
     nextui(),
-
-    
+    plugin(({ matchUtilities, theme }: { matchUtilities: any; theme: any }) => {
+      matchUtilities(
+        {
+          'gap-x-clamp': (value: string) => {
+            const [min, preferred, max] = value.split('-');
+            return {
+              columnGap: `clamp(${min}, ${preferred}, ${max})`,
+            };
+          },
+          'gap-y-clamp': (value: string) => {
+            const [min, preferred, max] = value.split('-');
+            return {
+              rowGap: `clamp(${min}, ${preferred}, ${max})`,
+            };
+          },
+        },
+      );
+    }),
   ],
-} satisfies Config
+} satisfies Config;
 
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
 }
 
-export default config
+export default config;

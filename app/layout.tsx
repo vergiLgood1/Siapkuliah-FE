@@ -10,6 +10,9 @@ import { NextUIProvider } from "@nextui-org/system";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  title: "Siapkuliah",
+  description: "a counseling platform for students",
+
   icons: {
     icon: [
       {
