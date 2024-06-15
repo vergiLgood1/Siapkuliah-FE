@@ -69,7 +69,7 @@ const PricingHero = () => {
     <>
       <div className="flex w-full items-center justify-center">
         {Heroes.filter((item) => item.isActive && item.category === "Pricing").map((item) => (
-          <Hero className="m-0 min-h-fit lg:py-40">
+          <Hero className="m-0 min-h-fit pt-40 md:py-40 ">
             <HeroTitle>{item.title}</HeroTitle>
             <HeroSub className="text-xs md:text-sm font-medium">
               {item.subtitle}
