@@ -1,45 +1,51 @@
-'use client'
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
 import { IconBrandAtlassian, IconBrandLivestorm, IconBrandPlanetscale, IconBrandRetool, IconBrandSupabase } from "@/components/tech-brand";
-
+import { FaAccessibleIcon } from "react-icons/fa";
+import { IconBrandAdonisJs, IconBrandNetflix } from "@tabler/icons-react";
 
 const icons = [
-
-  { icon: <IconBrandAtlassian /> },
-  { icon: <IconBrandSupabase /> },
-  { icon: <IconBrandPlanetscale /> },
-  { icon: <IconBrandRetool /> },
-  { icon: <IconBrandLivestorm /> },
-
+  { icon: <IconBrandAtlassian className=" h-auto w-40" /> },
+  { icon: <IconBrandSupabase  className=" h-auto w-40" /> },
+  { icon: <IconBrandPlanetscale className=" h-auto w-40" /> },
+  { icon: <IconBrandRetool className=" h-auto w-40" /> },
+  { icon: <IconBrandLivestorm  className=" h-auto w-40" /> },
 ];
+
+// const icons = [
+//   { icon: <IconBrandAdonisJs  className=" h-auto w-40" /> },
+//   { icon: <IconBrandNetflix  className=" h-auto w-40" /> },
+//   { icon: <IconBrandNetflix className=" h-auto w-40" /> },
+//   { icon: <IconBrandNetflix className=" h-auto w-40" /> },
+//   { icon: <IconBrandNetflix className=" h-auto w-40" /> },
+// ];
+
 
 const Brand = () => {
   const duplicatedIcons = [...icons, ...icons];
 
   return (
-    <div
-      className="relative h-full overflow-hidden py-0 bg-white mx-auto"
-      style={{ width: "100%" }}
-    >
-      <div className=""></div>
-
+    <div className="relative h-full overflow-hidden py-0 bg-white mx-auto">
       <motion.div
         className="flex"
-        
+        // animate={{
+        //   x: ["0%", "-100%"],
+        //   transition: {
+        //     ease: "linear",
+        //     duration: 60,
+        //     repeat: Infinity,
+        //   },
+        // }}
       >
-        {duplicatedIcons.map((icon, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0"
-            style={{ width: `${100 / icons.length}%` }}
-          >
-            <div className="flex items-center justify-center h-full">
-              {icon.icon}
-            </div>
-          </div>
-        ))}
+        <ul className="grid grid-cols-5 gap-8 md:gap-16 lg:gap-28 p-8">
+          {icons.map((item, i) => (
+            <li key={i} className="flex items-center justify-center space-x-2">
+              {item.icon}
+            </li>
+          ))}
+        </ul>
       </motion.div>
     </div>
   );

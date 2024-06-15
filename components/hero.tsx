@@ -90,7 +90,7 @@ export const HeroTitle: React.FC<{
   return (
     <div
       className={cn(
-        "text-3xl md:text-7xl font-medium dark:text-white text-center md:max-w-3xl",
+        "text-4xl md:text-7xl font-medium dark:text-white text-center md:max-w-3xl",
         className
       )}
     >
@@ -106,7 +106,7 @@ export const HeroSub: React.FC<{
   return (
     <div
       className={cn(
-        "font-normal text-base md:text-2xl dark:text-neutral-200 py-4 text-center md:max-w-lg",
+        "font-normal text-lg md:text-2xl dark:text-neutral-200 py-4 text-center md:max-w-lg",
         className
       )}
     >

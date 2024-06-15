@@ -79,12 +79,12 @@ const CustomersHero = () => {
         {Heroes.filter(
           (item) => item.isActive && item.category === "Customer"
         ).map((item) => (
-          <Hero className="m-0 min-h-fit lg:py-40 ">
+          <Hero className="m-0 min-h-fit pt-40 md:py-40 ">
             <HeroTitle>{item.title}</HeroTitle>
-            <HeroSub className="text-xs md:text-sm font-medium my-8 ">
+            <HeroSub className=" md:text-sm font-medium my-8 ">
               {item.subtitle}
             </HeroSub>
-            <HeroFooter className="max-w-full md:pb-28 border-b-4 border-[#F5F5F5] ">
+            <HeroFooter className="max-w-full pb-28 border-b-4 border-[#F5F5F5] ">
               <Brand />
             </HeroFooter>
           </Hero>
