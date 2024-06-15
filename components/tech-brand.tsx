@@ -14,7 +14,7 @@ export const IconBrandLivestorm: React.FC<LogoProps> = ({ className }) => {
         width="150"
         height="150"
         alt="Logo"
-        className="w-14 md:w-24 lg:w-[150px]"
+        
       />
     </div>
   );
@@ -27,7 +27,7 @@ export const IconBrandSupabase: React.FC<LogoProps> = ({ className }) => {
         width="150"
         height="150"
         alt="Logo"
-        className="w-14 md:w-24 lg:w-[150px]"
+        
       />
     </div>
   );
@@ -40,7 +40,7 @@ export const IconBrandRetool: React.FC<LogoProps> = ({ className }) => {
         width="150"
         height="150"
         alt="Logo"
-        className="w-14 md:w-24 lg:w-[150px]"
+        
       />
     </div>
   );
@@ -53,7 +53,7 @@ export const IconBrandPlanetscale: React.FC<LogoProps> = ({ className }) => {
           width="150"
           height="150"
           alt="Logo"
-          className="w-14 md:w-24 lg:w-[150px]"
+          
         />
       </div>
     );
@@ -66,7 +66,7 @@ export const IconBrandAtlassian: React.FC<LogoProps> = ({ className }) => {
         width="150"
         height="150"
         alt="Logo"
-        className="w-14 md:w-24 lg:w-[150px]"
+        className=""
       />
     </div>
   );

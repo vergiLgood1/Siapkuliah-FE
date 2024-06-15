@@ -4,6 +4,7 @@ import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { BentoGrid } from "@/components/ui/bento-grid";
 import { Button } from "@/components/ui/button";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function Cta() {
@@ -15,16 +16,17 @@ export function Cta() {
             The road to your dreams starts here
           </span>
           <h1 className="col-span-4 text-center text-xl md:text-3xl lg:text-6xl font-medium text-[#2d2d2d] max-w-xs md:max-w-sm lg:max-w-xl">
-            Get the best counseling services from siapkuliah
+            Get started with Siapkuliah
           </h1>
           <div className="col-span-4 flex items-center justify-center gap-x-2 p-6">
-            <Button size="lg">Talk to us</Button>
-            <Button
-              size="lg"
-              variant="secondary"
-            >
-              Get started
-            </Button>
+            <Link href="/">
+              <Button size="lg">Talk to us</Button>
+            </Link>
+            <Link href="/auth/login">
+              <Button size="lg" variant="secondary">
+                Get started
+              </Button>
+            </Link>
           </div>
         </div>
       </BentoGrid>

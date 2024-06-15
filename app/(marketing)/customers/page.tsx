@@ -1,3 +1,4 @@
+import { Cta } from "../_components/cta";
 import CollectionCustomers from "./_components/collection-customers";
 import CustomersHero from "./_components/hero";
 import TestimonialCustomers from "./_components/testimonial";
@@ -8,6 +9,7 @@ const CustomersPage = () => {
             <CustomersHero/>
             <TestimonialCustomers/>
             <CollectionCustomers/>
+            <Cta/>
         </main>
      );
 }
