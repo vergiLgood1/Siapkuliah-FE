@@ -1,7 +1,27 @@
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { BentoGrid } from "@/components/ui/bento-grid";
-
-import { FaAtlassian, FaGithub, FaGoogle, FaMicrosoft, FaApple, FaFacebook, FaAmazon, FaSlack, FaTrello, FaDropbox, FaSpotify, FaSalesforce, FaShopify, FaTwitter, FaLinkedin, FaUber, FaAirbnb, FaPaypal, FaAndroid, FaAmazonPay } from "react-icons/fa";
+import {
+  FaAtlassian,
+  FaGithub,
+  FaGoogle,
+  FaMicrosoft,
+  FaApple,
+  FaFacebook,
+  FaAmazon,
+  FaSlack,
+  FaTrello,
+  FaDropbox,
+  FaSpotify,
+  FaSalesforce,
+  FaShopify,
+  FaTwitter,
+  FaLinkedin,
+  FaUber,
+  FaAirbnb,
+  FaPaypal,
+  FaAndroid,
+  FaAmazonPay,
+} from "react-icons/fa";
 
 const CollectionCustomers = () => {
   return (

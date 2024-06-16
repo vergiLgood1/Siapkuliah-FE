@@ -2,16 +2,22 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { IconBrandAtlassian, IconBrandLivestorm, IconBrandPlanetscale, IconBrandRetool, IconBrandSupabase } from "@/components/tech-brand";
+import {
+  IconBrandAtlassian,
+  IconBrandLivestorm,
+  IconBrandPlanetscale,
+  IconBrandRetool,
+  IconBrandSupabase,
+} from "@/components/tech-brand";
 import { FaAccessibleIcon } from "react-icons/fa";
 import { IconBrandAdonisJs, IconBrandNetflix } from "@tabler/icons-react";
 
 const icons = [
-  { icon: <IconBrandAtlassian className=" h-auto w-40" /> },
-  { icon: <IconBrandSupabase  className=" h-auto w-40" /> },
-  { icon: <IconBrandPlanetscale className=" h-auto w-40" /> },
-  { icon: <IconBrandRetool className=" h-auto w-40" /> },
-  { icon: <IconBrandLivestorm  className=" h-auto w-40" /> },
+  { icon: <IconBrandAtlassian className=" " /> },
+  { icon: <IconBrandSupabase className=" " /> },
+  { icon: <IconBrandPlanetscale className=" " /> },
+  { icon: <IconBrandRetool className=" " /> },
+  { icon: <IconBrandLivestorm className=" " /> },
 ];
 
 // const icons = [
@@ -21,7 +27,6 @@ const icons = [
 //   { icon: <IconBrandNetflix className=" h-auto w-40" /> },
 //   { icon: <IconBrandNetflix className=" h-auto w-40" /> },
 // ];
-
 
 const Brand = () => {
   const duplicatedIcons = [...icons, ...icons];
