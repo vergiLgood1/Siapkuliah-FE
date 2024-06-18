@@ -11,8 +11,29 @@ import { Button } from "./ui/button";
 import { NavigationsMenu } from "./menubar";
 import { Logo } from "./logo";
 import HumbergerMenu from "./humberger-menu";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useLogoutMutation } from "@/redux/features/auth-api-slice";
+import { logout as setLogout } from "@/redux/features/auth-slice";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const dispacth = useAppDispatch();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const [logout, { isLoading }] = useLogoutMutation();
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout(undefined)
+      .unwrap()
+      .then(() => {
+        dispacth(setLogout());
+      })
+      .finally(() => {
+        router.push("/");
+      });
+  };
+
   const scrolled = useScrollTop();
 
   return (
@@ -29,24 +50,37 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
-          <div className="hidden lg:block">
-            <Button className="px-4 py-6" variant="ghost">
+        {!isAuthenticated && (
+          <div className="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
+            <div className="hidden lg:block">
               <Link className="text-[16px] font-medium" href="/auth/login">
-                Sign in
+                <Button className="px-4 py-6" variant="ghost">
+                  Sign in
+                </Button>
               </Link>
-            </Button>
-          </div>
-          <div className="hidden lg:block">
-            <Button className="px-4 py-6">
+            </div>
+            <div className="hidden lg:block">
               <Link className="text-[16px] font-medium" href="/auth/register">
-                Start for free
+                <Button className="px-4 py-6">Start for free</Button>
               </Link>
-            </Button>
+            </div>
+            <HumbergerMenu />
+            {/* <ModeToggle /> */}
           </div>
-          <HumbergerMenu/>
-          {/* <ModeToggle /> */}
-        </div>
+        )}
+        {isAuthenticated && (
+          <div className="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
+            <div className="hidden lg:block">
+              <Link className="text-[16px] font-medium" href="/auth/register">
+                <Button onClick={handleLogout} className="px-4 py-6">
+                  Logout
+                </Button>
+              </Link>
+            </div>
+            <HumbergerMenu />
+            {/* <ModeToggle /> */}
+          </div>
+        )}
 
         <div
           id="navbar-collapse-with-animation"

@@ -6,6 +6,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import CounselorShowcase from "./_components/counselor-showcase";
 
+import { Cta } from "@/app/(marketing)/_components/cta";
+import { CounselorCard } from "./_components/counselor-card";
+
+
 const Heroes = [
   {
     title: "Find the path to your dream college",
@@ -77,18 +81,15 @@ const CounselingPage = () => {
         ).map((item) => (
           <Hero className="m-0 min-h-fit pt-40 md:py-40 border-b-4 border-[#F5F5F5] ">
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-7xl font-medium mb-5">
+              <h1 className="text-3xl md:text-7xl font-medium mb-5">
                 Amazing — counselors
               </h1>
-              <span className="text-lg mb-14 font-medium text-center">
+              <span className="text-base md:text-lg mb-14 font-medium text-center">
                 All an amazing counselors that you can choose
               </span>
-              <div className="">
-
-              </div>
              <CounselorShowcase/>
             </div>
-            <HeroTitle className="md:text-6xl md:max-w-full">
+            {/* <HeroTitle className="md:text-6xl md:max-w-full">
               {item.title}
             </HeroTitle>
             <HeroSub className=" md:text-lg font-medium md:max-w-full">
@@ -103,21 +104,16 @@ const CounselingPage = () => {
                   {item.buttonText2}
                 </Button>
               </Link>
-            </HeroFooter>
+            </HeroFooter> */}
           </Hero>
         ))}
       </div>
       <div>
-        
+        <CounselorCard/>
       </div>
+      <Cta/>
     </>
   );
 };
 
 export default CounselingPage;
-
-const item = [
-    {
-        imgUrl: ""
-    }
-]

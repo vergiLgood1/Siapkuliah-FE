@@ -1,67 +1,82 @@
 "use client";
 
 import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { BentoGrid } from "@/components/ui/bento-grid";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { cn } from "@/lib/cn";
+import { useGetAllMentorsQuery } from "@/redux/features/mentors/mentor-api-slice";
+import { image } from "@nextui-org/theme";
+
 import Image from "next/image";
+import Link from "next/link";
 
-const CounselingDetail = () => {
+type CardProps = React.ComponentProps<typeof Card>;
+
+export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
+
+//  const {data: mentors, error, isLoading} = useGetAllMentorsQuery({ })
+
   return (
-    <>
-      <MaxWidthWrapper>
-        <div className="md:py-40">
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="text-3xl md:text-7xl font-medium mb-5">
-              Amazing — counselors
-            </h1>
-            <span className="text-base md:text-lg mb-14 font-medium text-center">
-              All an amazing counselors that you can choose
-            </span>
-          </div>
-          {mentors.map((mentor, i) => (
-            <div className="grid grid-cols-4">
-              <div key={i} className="col-span-1">
-                <Image
-                  className="object-contain object-center rounded-lg"
-                  src={mentor.imageUrl}
-                  alt="header"
-                  width={300}
-                  height={300}
-                />
-              </div>
-              <div className="col-span-3">
-                <h2 className="text-2xl font-semibold">
-                  {mentor.user.first_name} {mentor.user.last_name}
-                </h2>
-                <p className="text-lg text-gray-500 mb-4">{mentor.education}</p>
-                <p className="text-lg mb-4">{mentor.bio}</p>
-                <p className="text-lg mb-4">
-                  Experience: {mentor.experience_years} years
-                </p>
-                <p className="text-lg mb-4">Subjects: {mentor.subjects}</p>
-                <p className="text-lg mb-4">
-                  Total Reviews: {mentor.total_reviews}
-                </p>
-                <p className="text-lg mb-4">
-                  Total Students: {mentor.total_students}
-                </p>
-                <a
-                  className="text-lg text-blue-500 underline"
-                  href={mentor.link}
-                >
-                  Learn more
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </MaxWidthWrapper>
-    </>
+    <MaxWidthWrapper
+      className={cn("")}
+    >
+      <BentoGrid className="max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto md:auto-rows-auto py-12 md:py-28 gap-4 md:gap-8 border-b-4 border-[#f5f5f5]">
+        {/* <div className="flex flex-col col-span-4 items-center justify-center">
+          <span className=" col-span-3 text-center text-3xl md:text-5xl lg:text-7xl font-medium text-[#2d2d2d] mb-6 md:mb-12 max-w-xs md:max-w-sm lg:max-w-2xl">
+            Meet with our mentors
+          </span>
+        </div> */}
+        {mentors.map((mentor, i) => (
+          <Card
+            key={i}
+            className={cn("w-full  bg-[#F5F5F5] border-none ", className)}
+            {...props}
+          >
+            <CardHeader className="items-center justify-center w-full">
+              <Image
+                alt="Card background"
+                className="object-cover object-center rounded-lg max-h-[200px] flex items-center justify-center"
+                src={mentor.imageUrl}
+                width={300}
+                height={100}
+              />
+            </CardHeader>
+            <CardContent className={cn("space-y-4")}>
+              <CardTitle className="text-sm text-[#A3A3A3] truncate">
+                {mentor.education}
+              </CardTitle>
+              <CardDescription className="text-lg text-[#1F1F1F] font-bold">
+                {mentor.user.username}
+              </CardDescription>
+            </CardContent>
+            <CardFooter>
+              <Link
+                className={cn("flex items-center justify-center w-full")}
+                href={`/counseling/${mentor.id}`}
+              >
+                <Button className="w-full">Let's talk</Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+        
+      </BentoGrid>
+    </MaxWidthWrapper>
   );
-};
-
-export default CounselingDetail;
+}
 
 export const mentors = [
   {
+    id: "1",
     user: {
       username: "johndoe",
       email: "johndoe@example.com",
@@ -259,7 +274,7 @@ export const mentors = [
     link: "https://example.com",
   },
   {
-    id: "",
+    id: "12",
     user: {
       username: "emilydavis",
       email: "emilydavis@example.com",
@@ -277,3 +292,4 @@ export const mentors = [
     link: "https://example.com",
   },
 ];
+
