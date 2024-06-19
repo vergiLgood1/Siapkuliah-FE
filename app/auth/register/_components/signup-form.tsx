@@ -25,27 +25,25 @@ import { useRegister } from "@/hooks";
 import { Metadata } from "next";
 import { continueWithFacebook, continueWithGoogle } from "@/lib";
 
-
 type CardProps = React.ComponentProps<typeof Card>;
 
 export const metadata: Metadata = {
   title: "Siap Kuliah | Sign up",
-  description: "Siapkuliah"
-}
+  description: "Siapkuliah",
+};
 
 export function CardSingUp({ className, ...props }: CardProps) {
-
   const {
-    first_name, 
-    last_name, 
-    email, 
-    password, 
+    first_name,
+    last_name,
+    email,
+    password,
     re_password,
     isLoading,
     onChange,
-    onSubmit
+    onSubmit,
   } = useRegister();
-  
+
   return (
     <>
       <Card
@@ -131,23 +129,22 @@ export function CardSingUp({ className, ...props }: CardProps) {
                 onChange={onChange}
               />
             </LabelInputContainer>
-              {isLoading && 
+            {isLoading && (
               <div className="flex items-center justify-center bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]">
                 <Spinner size="lg" />
               </div>
-              }
-              {!isLoading && (
-                <div className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]">
-                  <Button
-                    type="submit"
-                    className="w-full flex justify-center items-center"
-                  >
-                    Sign up &rarr;
-                  </Button>
+            )}
+            {!isLoading && (
+              <div className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]">
+                <Button
+                  type="submit"
+                  className="w-full flex justify-center items-center"
+                >
+                  Sign up &rarr;
+                </Button>
                 <BottomGradient />
-                </div>
-              )}
-            
+              </div>
+            )}
           </form>
         </CardContent>
         <CardFooter className="">
@@ -155,56 +152,42 @@ export function CardSingUp({ className, ...props }: CardProps) {
             <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-4 h-[1px] w-full" />
 
             <div className="flex flex-col space-y-4">
-                {isLoading && 
-                <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
-                  <Spinner size="lg" />
-                </div>
-                }
-                {!isLoading && (
-                  <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
-                    <Button
-                      variant="ghost"
-                      type="submit"
-                      className="w-full flex items-center justify-center"
-                      onClick={continueWithGoogle} 
-                    >
-                      <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300 mr-2 flex items-center justify-center" />
-                      Google
-                    </Button>
-                    <BottomGradient />
-                  </div>
-                )}
-                {/* <IconBrandGoogle className="" />
+              <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
+                <Button
+                  variant="ghost"
+                  type="submit"
+                  className="w-full flex items-center justify-center"
+                  onClick={continueWithGoogle}
+                >
+                  <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300 mr-2 flex items-center justify-center" />
+                  Google
+                </Button>
+                <BottomGradient />
+              </div>
+
+              {/* <IconBrandGoogle className="" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">
               {isLoading ? <Spinner size="sm"/> : "Google"}
               </span>
               <BottomGradient /> */}
-                {isLoading && 
-                <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
-                <Spinner size="lg" />
-              
-                </div>
-            }
-                {!isLoading && (
-                  <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
-                    <Button
-                      variant="ghost"
-                      type="submit"
-                      className="w-full flex items-center justify-center"
-                      onClick={continueWithFacebook}
-                    >
-                      <IconBrandFacebook className="h-4 w-4 text-neutral-800 dark:text-neutral-300 mr-2 flex items-center justify-center" />
-                      Facebook
-                    </Button>
-                    <BottomGradient />
-                  </div>
-                )}
-                {/* <IconBrandFacebook className="" />
+              <div className="relative group/btn flex space-x-2 items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]">
+                <Button
+                  variant="ghost"
+                  type="submit"
+                  className="w-full flex items-center justify-center"
+                  onClick={continueWithFacebook}
+                >
+                  <IconBrandFacebook className="h-4 w-4 text-neutral-800 dark:text-neutral-300 mr-2 flex items-center justify-center" />
+                  Facebook
+                </Button>
+                <BottomGradient />
+              </div>
+
+              {/* <IconBrandFacebook className="" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">
               {isLoading ? <Spinner size="sm"/> : "Facebook"}
               </span>
               */}
-              
             </div>
           </div>
         </CardFooter>

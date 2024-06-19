@@ -12,8 +12,8 @@ import { NavigationsMenu } from "./menubar";
 import { Logo } from "./logo";
 import HumbergerMenu from "./humberger-menu";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useLogoutMutation } from "@/redux/features/auth-api-slice";
-import { logout as setLogout } from "@/redux/features/auth-slice";
+import { useLogoutMutation } from "@/redux/api/auth-api-slice";
+import { logout as setLogout } from "@/redux/api/auth-slice";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {

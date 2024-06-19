@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { cn } from "@/lib/cn";
-import { useGetAllMentorsQuery } from "@/redux/features/mentors/mentor-api-slice";
+import { useGetAllMentorsQuery } from "@/redux/api/mentors/mentor-api-slice";
 import { image } from "@nextui-org/theme";
 
 import Image from "next/image";
@@ -22,13 +22,10 @@ import Link from "next/link";
 type CardProps = React.ComponentProps<typeof Card>;
 
 export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
-
-//  const {data: mentors, error, isLoading} = useGetAllMentorsQuery({ })
+  //  const {data: mentors, error, isLoading} = useGetAllMentorsQuery({ })
 
   return (
-    <MaxWidthWrapper
-      className={cn("")}
-    >
+    <MaxWidthWrapper className={cn("")}>
       <BentoGrid className="max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto md:auto-rows-auto py-12 md:py-28 gap-4 md:gap-8 border-b-4 border-[#f5f5f5]">
         {/* <div className="flex flex-col col-span-4 items-center justify-center">
           <span className=" col-span-3 text-center text-3xl md:text-5xl lg:text-7xl font-medium text-[#2d2d2d] mb-6 md:mb-12 max-w-xs md:max-w-sm lg:max-w-2xl">
@@ -68,11 +65,10 @@ export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
             </CardFooter>
           </Card>
         ))}
-        
       </BentoGrid>
     </MaxWidthWrapper>
   );
-}
+};
 
 export const mentors = [
   {
@@ -292,4 +288,3 @@ export const mentors = [
     link: "https://example.com",
   },
 ];
-

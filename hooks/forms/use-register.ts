@@ -1,12 +1,10 @@
-
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useRegisterMutation } from "@/redux/features/auth-api-slice";
+import { useRegisterMutation } from "@/redux/api/auth-api-slice";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 export default function useRegister() {
-
-const [loadingButton, setLoadingButton] = useState<string | null>(null);
+  const [loadingButton, setLoadingButton] = useState<string | null>(null);
 
   const router = useRouter();
   const [register, { isLoading }] = useRegisterMutation();
@@ -44,14 +42,13 @@ const [loadingButton, setLoadingButton] = useState<string | null>(null);
   };
 
   return {
-    first_name, 
-    last_name, 
-    email, 
-    password, 
+    first_name,
+    last_name,
+    email,
+    password,
     re_password,
     isLoading,
     onChange,
-    onSubmit
-  }
-
+    onSubmit,
+  };
 }
