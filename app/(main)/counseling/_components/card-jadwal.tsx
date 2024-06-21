@@ -110,18 +110,18 @@ const CardJadwalDanLayanan = () => {
               <h2 className="text-2xl text-default-900 font-semibold">
                 Pilih tanggal dan waktu
               </h2>
-              <div>
+              <div className="flex gap-4">
                 <DatePicker />
-              </div>
-              <div className="flex flex-col gap-4">
-                <h2 className="text-2xl text-default-900 font-semibold">
-                  Siang
-                </h2>
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline">
-                    10:00 - 11:00
-                  </Button>
-                  <Button size="sm">10:00 - 11:00</Button>
+                <div className="flex flex-col gap-4">
+                  <h2 className="text-2xl text-default-900 font-semibold">
+                    Siang
+                    <div className="flex gap-2">
+                      <Button size="sm" variant="outline">
+                        10:00 - 11:00
+                      </Button>
+                      <Button size="sm">10:00 - 11:00</Button>
+                    </div>
+                  </h2>
                 </div>
               </div>
             </div>
