@@ -14,15 +14,25 @@ import {
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { cn } from "@/lib/cn";
 import { useGetAllMentorsQuery } from "@/redux/api/mentors/mentor-api-slice";
+import { useAppDispatch } from "@/redux/hooks";
 import { image } from "@nextui-org/theme";
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { CldImage } from 'next-cloudinary';
+import { useOrigin } from "@/hooks/use-origin";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
-export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
-  //  const {data: mentors, error, isLoading} = useGetAllMentorsQuery({ })
+export const CounselorCard: React.FC<CardProps>  = ({ className, ...props }: CardProps) => {
+
+  const { data: mentors, error, isLoading  } = useGetAllMentorsQuery();
+
+  const cloudinary  = "https://res.cloudinary.com/dlk3dxah5/";
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Something went wrong</div>;
 
   return (
     <MaxWidthWrapper className={cn("")}>
@@ -32,18 +42,18 @@ export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
             Meet with our mentors
           </span>
         </div> */}
-        {mentors.map((mentor, i) => (
+        {mentors?.map((mentor, i) => (
           <Card
             key={i}
             className={cn("w-full  bg-[#F5F5F5] border-none ", className)}
             {...props}
           >
             <CardHeader className="items-center justify-center w-full">
-              <Image
+              <CldImage
                 alt="Card background"
-                className="object-cover object-center rounded-lg max-h-[200px] flex items-center justify-center"
-                src={mentor.imageUrl}
-                width={300}
+                className="object-cover object-center rounded-lg max-h-[200px] min-h-[200px] flex items-center justify-center"
+                src={`${cloudinary}${mentor.image}`}
+                width={500}
                 height={100}
               />
             </CardHeader>
@@ -52,7 +62,7 @@ export const CounselorCard: React.FC = ({ className, ...props }: CardProps) => {
                 {mentor.education}
               </CardTitle>
               <CardDescription className="text-lg text-[#1F1F1F] font-bold">
-                {mentor.user.username}
+                {mentor.first_name} {mentor.last_name}
               </CardDescription>
             </CardContent>
             <CardFooter>

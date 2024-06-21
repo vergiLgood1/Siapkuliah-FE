@@ -1,6 +1,5 @@
 import { apiSlice } from "../services/api-slice";
 
-
 interface User {
 	first_name: string;
 	last_name: string;

@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const dispacth = useAppDispatch();
-  const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const { isAuthenticated } = useAppSelector(state => state.auth);
   const [logout, { isLoading }] = useLogoutMutation();
 
   const router = useRouter();
