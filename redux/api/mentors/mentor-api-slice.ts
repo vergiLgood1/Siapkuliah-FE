@@ -23,6 +23,12 @@ interface MentorProps {
     id: string;
     specialization: string;
   };
+  availabilities: {
+    id: string;
+    day_of_week: string;
+    start_time: string;
+    end_time: string;
+  }
   video_intro?: string | null;
   title?: string | null;
   bio: string;

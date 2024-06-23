@@ -18,3 +18,8 @@ const pricingSessionApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
+
+export const {
+  useGetAllPricingSessionsQuery,
+  useGetPricingSessionDetailsQuery,
+} = pricingSessionApiSlice;

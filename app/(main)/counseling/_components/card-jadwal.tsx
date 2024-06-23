@@ -5,9 +5,20 @@ import { cn } from "@/lib/cn";
 import { DatePicker } from "@/components/date-picker";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useGetAllPricingSessionsQuery } from "@/redux/api/pricing/pricing-session-api";
+import { useGetMentorDetailsQuery } from "@/redux/api/mentors/mentor-api-slice";
+import { useParams } from "next/navigation";
 
 const CardJadwalDanLayanan = () => {
+  const params = useParams();
+  const { id } = params;
+
   const [selectedTime, setIsSelectedTime] = useState();
+
+  const { data: pricing, error, isLoading } = useGetAllPricingSessionsQuery();
+
+  const { data: mentor } = useGetMentorDetailsQuery(id as string);
+
   return (
     <>
       <Card>
@@ -53,40 +64,58 @@ const CardJadwalDanLayanan = () => {
           </h2>
         </CardHeader>
         <div className="flex flex-wrap gap-4 p-3">
-          <Card className={cn("shadow-none border-2 border-[#dee2e6]")}>
-            <CardBody className="flex flex-col items-center justify-center text-center gap-2">
-              <span className=" w-full text-xs p-1 bg-[#2D2D2D] text-white font-semibold uppercase rounded-lg">
-                Sesi 1
-              </span>
-              <p className="text-lg text-[#2D2D2D] font-semibold">
-                RP. 200.000
-              </p>
-              <p className="text-xs text-[#A1A1A1] font-semibold">
-                Belaku hingga 1 hari
-              </p>
-            </CardBody>
-          </Card>
+          {pricing?.map((item, i) => (
+            <Card
+              key={i}
+              className={cn("shadow-none border-2 border-[#dee2e6]")}
+            >
+              <CardBody className="flex flex-col items-center justify-center text-center gap-2">
+                <span className=" w-full text-xs p-1 bg-[#2D2D2D] text-white font-semibold uppercase rounded-lg">
+                  {item.name}
+                </span>
+                <p className="text-lg text-[#2D2D2D] font-semibold">
+                  {item.price}
+                </p>
+                <p className="text-xs text-[#A1A1A1] font-semibold">
+                  Belaku hingga {item.validity_days} hari
+                </p>
+              </CardBody>
+            </Card>
+          ))}
           <CardHeader>
             <div className="flex flex-col gap-4">
               <h2 className="text-2xl text-default-900 font-semibold">
                 Pilih tanggal dan waktu
               </h2>
-              <div className="flex gap-4">
+              <div className="flex flex-col gap-4">
                 <DatePicker />
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-2xl text-default-900 font-semibold">
-                    Siang
-                  </h2>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline">
-                      10:00 - 11:00
-                    </Button>
-                    <Button
-                    variant="outline"
-                    size="sm">10:00 - 11:00</Button>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-4">
+                {Array.isArray(mentor?.availabilities) &&
+                  mentor?.availabilities.map((item, i) => (
+                    <div key={i} className="flex flex-col gap-4">
+                      {item.start_time < "12.00" && (
+                        <h2 className="text-2xl text-default-900 font-semibold">
+                          Pagi
+                        </h2>
+                      )}
+                      {item.start_time > "12.00" && item.end_time <= "17.00" &&
+                         (
+                          <h2 className="text-2xl text-default-900 font-semibold">
+                            Siang
+                          </h2>
+                        )}
+                      {item.start_time > "17.00" && (
+                        <h2 className="text-2xl text-default-900 font-semibold">
+                          Malam
+                        </h2>
+                      )}
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline">
+                          {item.start_time} - {item.end_time}
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                {/* <div className="flex flex-col gap-4">
                   <h2 className="text-2xl text-default-900 font-semibold">
                     Malam
                   </h2>
@@ -96,7 +125,7 @@ const CardJadwalDanLayanan = () => {
                     </Button>
                     <Button size="sm">21:00 - 22:00</Button>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </CardHeader>
