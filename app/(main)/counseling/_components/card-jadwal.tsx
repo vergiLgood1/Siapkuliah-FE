@@ -66,45 +66,6 @@ const CardJadwalDanLayanan = () => {
               </p>
             </CardBody>
           </Card>
-          <Card className={cn("shadow-none border-2 border-[#f0f0f0]")}>
-            <CardBody className="flex flex-col items-center justify-center text-center gap-2">
-              <span className=" w-full text-xs p-1 bg-[#2D2D2D] text-white font-semibold uppercase rounded-lg">
-                Sesi 1
-              </span>
-              <p className="text-lg text-[#2D2D2D] font-semibold">
-                RP. 200.000
-              </p>
-              <p className="text-xs text-[#A1A1A1] font-semibold">
-                Belaku hingga 1 hari
-              </p>
-            </CardBody>
-          </Card>
-          <Card className={cn("shadow-none border-2 border-[#f0f0f0]")}>
-            <CardBody className="flex flex-col items-center justify-center text-center gap-2">
-              <span className=" w-full text-xs p-1 bg-[#2D2D2D] text-white font-semibold uppercase rounded-lg">
-                Sesi 1
-              </span>
-              <p className="text-lg text-[#2D2D2D] font-semibold">
-                RP. 200.000
-              </p>
-              <p className="text-xs text-[#A1A1A1] font-semibold">
-                Belaku hingga 1 hari
-              </p>
-            </CardBody>
-          </Card>
-          <Card className={cn("shadow-none border-2 border-[#f0f0f0]")}>
-            <CardBody className="flex flex-col items-center justify-center text-center gap-2">
-              <span className=" w-full text-xs p-1 bg-[#2D2D2D] text-white font-semibold uppercase rounded-lg">
-                Sesi 1
-              </span>
-              <p className="text-lg text-[#2D2D2D] font-semibold">
-                RP. 200.000
-              </p>
-              <p className="text-xs text-[#A1A1A1] font-semibold">
-                Belaku hingga 1 hari
-              </p>
-            </CardBody>
-          </Card>
           <CardHeader>
             <div className="flex flex-col gap-4">
               <h2 className="text-2xl text-default-900 font-semibold">
