@@ -7,7 +7,6 @@ import type {
 import { setAuth, logout } from "../api/auth-slice";
 import { Mutex } from "async-mutex";
 
-console.log(process.env.NEXT_PUBLIC_HOST);
 const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_HOST}/api`,

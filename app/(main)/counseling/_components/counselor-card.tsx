@@ -13,23 +13,29 @@ import {
 } from "@/components/ui/card";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { cn } from "@/lib/cn";
-import { useGetAllMentorsQuery } from "@/redux/api/mentors/mentor-api-slice";
+import {
+
+  useGetAllMentorsQuery,
+
+} from "@/redux/api/mentors/mentor-api-slice";
 import { useAppDispatch } from "@/redux/hooks";
 import { image } from "@nextui-org/theme";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
-import { CldImage } from 'next-cloudinary';
+import { CldImage } from "next-cloudinary";
 import { useOrigin } from "@/hooks/use-origin";
 
 type CardProps = React.ComponentProps<typeof Card>;
 
-export const CounselorCard: React.FC<CardProps>  = ({ className, ...props }: CardProps) => {
+export const CounselorCard: React.FC<CardProps> = ({
+  className,
+  ...props
+}: CardProps) => {
+  const { data: mentors, error, isLoading } = useGetAllMentorsQuery();
 
-  const { data: mentors, error, isLoading  } = useGetAllMentorsQuery();
-
-  const cloudinary  = "https://res.cloudinary.com/dlk3dxah5/";
+  const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_MEDIA_URL;
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong</div>;
@@ -51,18 +57,18 @@ export const CounselorCard: React.FC<CardProps>  = ({ className, ...props }: Car
             <CardHeader className="items-center justify-center w-full">
               <CldImage
                 alt="Card background"
-                className="object-cover object-center rounded-lg max-h-[200px] min-h-[200px] flex items-center justify-center"
-                src={`${cloudinary}${mentor.image}`}
+                className="object-top object-cover rounded-lg max-h-[200px] min-h-[200px] flex items-center justify-center"
+                src={`${cloudinary}${mentor.user.photo_profile}` ?? ""}
                 width={500}
                 height={100}
               />
             </CardHeader>
             <CardContent className={cn("space-y-4")}>
               <CardTitle className="text-sm text-[#A3A3A3] truncate">
-                {mentor.education}
+                {mentor.title}
               </CardTitle>
               <CardDescription className="text-lg text-[#1F1F1F] font-bold">
-                {mentor.first_name} {mentor.last_name}
+                {mentor.user.first_name} {mentor.user.last_name}
               </CardDescription>
             </CardContent>
             <CardFooter>

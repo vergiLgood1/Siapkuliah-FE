@@ -115,13 +115,26 @@ const CardJadwalDanLayanan = () => {
                 <div className="flex flex-col gap-4">
                   <h2 className="text-2xl text-default-900 font-semibold">
                     Siang
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline">
-                        10:00 - 11:00
-                      </Button>
-                      <Button size="sm">10:00 - 11:00</Button>
-                    </div>
                   </h2>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline">
+                      10:00 - 11:00
+                    </Button>
+                    <Button
+                    variant="outline"
+                    size="sm">10:00 - 11:00</Button>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <h2 className="text-2xl text-default-900 font-semibold">
+                    Malam
+                  </h2>
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline">
+                      19:00 - 20:00
+                    </Button>
+                    <Button size="sm">21:00 - 22:00</Button>
+                  </div>
                 </div>
               </div>
             </div>

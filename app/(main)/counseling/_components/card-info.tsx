@@ -31,7 +31,7 @@ const CardInfo = () => {
     isLoading,
   } = useGetMentorDetailsQuery(id as string);
 
-  const cloudinary = "https://res.cloudinary.com/dlk3dxah5/";
+  const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_MEDIA_URL;
 
   if (isLoading)
     return (
@@ -63,15 +63,15 @@ const CardInfo = () => {
                 width={500}
                 height={500}
                 alt="avatar"
-                src="https://nextui.org/avatars/avatar-1.png"
-                className="flex items-center justify-center rounded-full max-w-[100px] max-h-[100px] border-4 border-[#c9c9cd]"
+                src={`${cloudinary}${mentor.user.photo_profile}` ?? ""}
+                className="flex items-center object-top object-fill justify-center rounded-full max-w-[100px] max-h-[100px] border-4 border-[#c9c9cd]"
               />
               <div className="flex flex-col gap-1 items-center justify-center">
                 <h4 className="text-sm font-semibold leading-none text-default-600 text-center">
-                  {mentor.education}
+                  {mentor.title}{" "}
                 </h4>
                 <h5 className="font-semibold  tracking-tight text-default-400">
-                  {mentor.first_name} {mentor.last_name}
+                  {mentor.user.first_name} {mentor.user.last_name}
                 </h5>
               </div>
             </div>
@@ -88,22 +88,28 @@ const CardInfo = () => {
                 <span>
                   <HiUserGroup color="#2D2D2D" size={24} />
                 </span>
-                <span>{mentor.total_students} + Session</span>
+                <span>{mentor.total_sessions} + Session</span>
               </li>
               <li className="flex items-center justify-center gap-2">
                 <span>
                   <IconBriefcaseFilled color="#fbcf33" />
                 </span>
-                <span>2 - 5 Tahun</span>
+                {mentor.experience_years <= 3 && <span>1 - 3 Tahun</span>}
+                {mentor.experience_years > 3 &&
+                  mentor.experience_years <= 5 && <span>3 - 5 Tahun</span>}
+                {mentor.experience_years > 5 &&
+                  mentor.experience_years <= 10 && <span>5 - 10 Tahun</span>}
               </li>
               <li className="flex gap-2">
                 <span>
                   <IconMapPinFilled color="#ea0606" size={24} />
                 </span>
-                <span>
-                  Jakarta Selatan - Kantor Ibunda.id, Jl. Ampera Raya Blok Rini
-                  No.12 A
-                </span>
+                {mentor && (
+                  <span>
+                    {mentor.user.country}, {mentor.user.province}, {" "}
+                    {mentor.user.city}
+                  </span>
+                )}
               </li>
             </ul>
           </CardBody>

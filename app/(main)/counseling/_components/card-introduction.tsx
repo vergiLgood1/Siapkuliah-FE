@@ -1,57 +1,67 @@
+import { useGetMentorDetailsQuery } from "@/redux/api/mentors/mentor-api-slice";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
+import { useParams } from "next/navigation";
 import ReactPlayer from "react-player";
 
 const CardIntroduction = () => {
+  const params = useParams();
+  const { id } = params;
+
+  const {
+    data: mentor,
+    error,
+    isLoading,
+  } = useGetMentorDetailsQuery(id as string);
+
+  const cloudinary = process.env.NEXT_PUBLIC_CLOUDINARY_MEDIA_URL;
+
   return (
     <>
-      <Card>
-        <CardHeader className="flex flex-col items-start gap-6">
-          <h2 className="text-2xl text-default-900 font-semibold">
-            Detail Counselor
-          </h2>
-          <div className="flex w-full items-center justify-center">
-            <ReactPlayer
-              url="https://videos.pexels.com/video-files/6655806/6655806-hd_1920_1080_30fps.mp4"
-              controls={true}
-              width="100%"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
-                alignItems: "center",
-              }}
-            />
-          </div>
-        </CardHeader>
-        <CardBody>
-          <div className="flex gap-4 mb-6">
-            <div className="space-y-1">
-              <span className="text-base text-default-900 font-semibold">SPPIK</span>
-              <p className="text-small text-[#A1A1A1] font-medium">
-                13 24 8 2 1 22-4212225
-              </p>
+      {mentor && (
+        <Card>
+          <CardHeader className="flex flex-col items-start gap-6">
+            <h2 className="text-2xl text-default-900 font-semibold">
+              Detail Counselor
+            </h2>
+            <div className="flex w-full items-center justify-center">
+              <ReactPlayer
+                url={`${cloudinary}${mentor.video_intro}`}
+                controls={true}
+                width="100%"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                  alignItems: "center",
+                }}
+              />
             </div>
-            <div className="space-y-1">
-              <span className="text-base text-default-900 font-semibold">STRPK</span>
-              <p className="text-small text-[#A1A1A1] font-medium">
-                13 24 8 2 1 22-4212225
-              </p>
+          </CardHeader>
+          <CardBody>
+            <div className="flex gap-4 mb-6">
+              <div className="space-y-1">
+                <span className="text-base text-default-900 font-semibold">
+                  SPPIK
+                </span>
+                <p className="text-small text-[#A1A1A1] font-medium">
+                  {mentor.sippk}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <span className="text-base text-default-900 font-semibold">
+                  STRPK
+                </span>
+                <p className="text-small text-[#A1A1A1] font-medium">
+                  {mentor.strpk}
+                </p>
+              </div>
             </div>
-          </div>
-          <p className="text-[#A1A1A1] font-medium text-pretty">
-            Marissa Meditania, M.Psi., Psikolog merupakan psikolog klinis yang
-            biasa membantu remaja dan dewasa mengatasi permasalahan psikologis
-            meliputi masalah emosional (kecemasan dan depresi), hubungan relasi
-            (teman, keluarga, dan pasangan), stress dan burnout (di tempat kerja
-            maupun peran sebagai orang tua), gangguan kepribadian, OCD, Fobia,
-            dan lain-lain. Terapi yang biasa digunakan adalah Cognitive
-            Behavioural Therapy (CBT), Rational-Emotive Behavioural Therapy
-            (REBT), Solution-Focused Therapy, Exposure Therapy, dan lain-lain.
-            Marissa juga sering memberikan psikoedukasi melalui seminar atau
-            webinar terkait workplace Issue, self-development dan parenting.
-          </p>
-        </CardBody>
-      </Card>
+            <p className="text-[#A1A1A1] font-medium text-pretty">
+              {mentor.bio}
+            </p>
+          </CardBody>
+        </Card>
+      )}
     </>
   );
 };
