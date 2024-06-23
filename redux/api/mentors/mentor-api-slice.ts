@@ -1,5 +1,4 @@
 import { apiSlice } from "@/redux/services/api-slice";
-import { get } from "http";
 
 interface MentorProps {
   id: string;
