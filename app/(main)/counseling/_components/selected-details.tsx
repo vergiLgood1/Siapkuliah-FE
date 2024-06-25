@@ -21,7 +21,7 @@ const SelectedDetails: React.FC<SelectedDetailsProps> = ({
 
   return (
     <>
-      <nav className="flex fixed bottom-0 py-4 border-solid border-t-2 bg-white z-[99999] mx-auto w-full max-w-screen-2xl px-2.5 md:px-12 2xl:px-12">
+      <nav className="flex fixed bottom-0 left-0 py-4 border-solid border-t-2 bg-white z-[99999] mx-auto w-full max-w-screen-2xl px-2.5 md:px-12 2xl:px-12">
         <div className="flex flex-col w-full space-y-1">
           <h2 className="font-semibold text-default-900">Rabu</h2>
           <div className="flex space-x-2">
