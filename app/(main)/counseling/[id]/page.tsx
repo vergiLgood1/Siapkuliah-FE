@@ -29,8 +29,9 @@ import { cn } from "@/lib/cn";
 import CardInfo from "../_components/card-info";
 import CardIntroduction from "../_components/card-introduction";
 import CardEducation from "../_components/card-education";
-import CardJadwalDanLayanan from "../_components/card-jadwal";
-import CardPaket from "../_components/card-paket";
+
+import CardPaket from "../_components/card-pricing";
+import CardJadwalDanLayanan from "../_components/CardJadwalDanLayanan";
 type MentorProps = {};
 
 interface CounselingDetailProps {

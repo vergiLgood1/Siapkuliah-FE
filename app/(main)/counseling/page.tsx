@@ -78,8 +78,8 @@ const CounselingPage = () => {
       <div className="flex w-full items-center justify-center">
         {Heroes.filter(
           (item) => item.isActive && item.category === "Counseling"
-        ).map((item) => (
-          <Hero className="m-0 min-h-fit pt-40 md:py-40 border-b-4 border-[#F5F5F5] ">
+        ).map((item, i) => (
+          <Hero key={i} className="m-0 min-h-fit pt-40 md:py-40 border-b-4 border-[#F5F5F5] ">
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-3xl md:text-7xl font-medium mb-5">
                 Amazing — counselors

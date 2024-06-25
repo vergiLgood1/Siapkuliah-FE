@@ -1,34 +1,42 @@
 import { apiSlice } from "@/redux/services/api-slice";
 
+interface User {
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  photo_profile: string;
+  country: string;
+  province: string;
+  city: string;
+}
+
+interface Educations {
+  id: string;
+  institution: string;
+  degree: string;
+  field_of_study: string;
+  graduation_year: number;
+}
+
+interface Specializations {
+  id: string;
+  specialization: string;
+}
+
+interface Availability {
+  id: string;
+  day_of_week: string;
+  start_time: string;
+  end_time: string;
+}
+
 interface MentorProps {
   id: string;
-  user: {
-    id: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    photo_profile: string;
-    country: string;
-    province: string;
-    city: string; 
-  };
-  educations: {
-    id: string;
-    institution: string;
-    degree: string;
-    field_of_study: string;
-    graduation_year: number;
-  };
-  specializations: {
-    id: string;
-    specialization: string;
-  };
-  availabilities: {
-    id: string;
-    day_of_week: string;
-    start_time: string;
-    end_time: string;
-  }
+  user: User[];
+  educations: Educations[];
+  specializations: Specializations[];
+  availabilities: Availability[];
   video_intro?: string | null;
   title?: string | null;
   bio: string;
@@ -69,8 +77,5 @@ const mentorApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { 
-  useGetAllMentorsQuery, 
-  useGetMentorDetailsQuery, 
- } =
+export const { useGetAllMentorsQuery, useGetMentorDetailsQuery } =
   mentorApiSlice;

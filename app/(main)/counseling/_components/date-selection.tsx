@@ -1,22 +1,21 @@
-"use client";
-
-import * as React from "react";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import React from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 import { cn } from "@/lib/cn";
-import { useDateSelection } from "@/hooks/counseling-details/use-date-selection";
 
-export function DatePicker() {
-  const [date, setDate] = React.useState<Date>();
+interface DateSelectionProps {
+  date: Date | undefined;
+  setDate: (date: Date | undefined) => void;
+}
 
+const DateSelection: React.FC<DateSelectionProps> = ({ date, setDate }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -34,7 +33,9 @@ export function DatePicker() {
             format(date, "dd LLL, y")
           ) : (
             <div className="flex flex-col space-y-2">
-              <span className="text-xs font-semibold text-muted-foreground">Pilih tanggal</span>
+              <span className="text-xs font-semibold text-muted-foreground">
+                Pilih tanggal
+              </span>
               <span className="block font-semibold">
                 {format(new Date(), "dd LLL, y")}
               </span>
@@ -42,10 +43,10 @@ export function DatePicker() {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent  className="w-auto p-0">
+      <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-     
+          onSelect={setDate}
           selected={date}
           initialFocus
           numberOfMonths={2}
@@ -53,6 +54,6 @@ export function DatePicker() {
       </PopoverContent>
     </Popover>
   );
-}
+};
 
-
+export default DateSelection;
