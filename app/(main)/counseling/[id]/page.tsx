@@ -32,25 +32,19 @@ import CardEducation from "../_components/card-education";
 
 import CardPaket from "../_components/card-pricing";
 import CardJadwalDanLayanan from "../_components/CardJadwalDanLayanan";
-type MentorProps = {};
+import BottomNav from "../_components/selected-details";
+import SelectedDetails from "../_components/selected-details";
+import { usePricingSelection } from "@/hooks/counseling-details/use-pricing-selection";
+import { useDateSelection } from "@/hooks/counseling-details/use-date-selection";
+import { useTimeSelection } from "@/hooks/counseling-details/use-time-selection";
 
 interface CounselingDetailProps {
   id: string;
 }
 
 const CounselingDetail: React.FC<CounselingDetailProps> = () => {
-  // const pathname = usePathname();
-  // const searchParams = useSearchParams();
-  // const id = searchParams.get('id')
-
   const params = useParams();
   const { id } = params;
-
-  // useEffect(() => {
-  //   const url = `${id}`
-  //   console.log(url)
-
-  // }, [id, pathname, searchParams])
 
   const {
     data: mentor,
@@ -58,7 +52,9 @@ const CounselingDetail: React.FC<CounselingDetailProps> = () => {
     isLoading,
   } = useGetMentorDetailsQuery(id as string);
 
-  const cloudinary = "https://res.cloudinary.com/dlk3dxah5/";
+  const { selectedPricing } = usePricingSelection();
+  const { date } = useDateSelection();
+  const { selectedTime } = useTimeSelection();
 
   if (isLoading)
     return (
@@ -94,11 +90,11 @@ const CounselingDetail: React.FC<CounselingDetailProps> = () => {
                 <CardEducation />
               </div>
               <CardJadwalDanLayanan />
-             
             </div>
           </div>
         </div>
       </MaxWidthWrapper>
+ 
     </>
   );
 };

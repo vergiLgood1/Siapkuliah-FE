@@ -13,6 +13,7 @@ import PricingCard from "./card-pricing";
 import DateSelection from "./date-selection";
 import TimeSelection from "./time-selection";
 import { format } from "date-fns";
+import SelectedDetails from "./selected-details";
 
 const CardJadwalDanLayanan: React.FC = () => {
   const params = useParams();
@@ -97,18 +98,12 @@ const CardJadwalDanLayanan: React.FC = () => {
           </div>
         </CardHeader>
       </Card>
-      {selectedPricing?.name && selectedTime && (
-        <div className="fixed col-span-2 bottom-0 w-full ">
-          <div className="flex flex-col w-full bg-red-500">
-            <h2>Rabu</h2>
-            <div className="flex space-x-2">
-              <span>{date ? format(date, "dd-MM-yyyy") : ""}</span>
-              <span>|</span>
-              <span>{selectedTime}</span>
-            </div>
-          </div>
-        </div>
-      )}
+      
+      <SelectedDetails
+        selectedPricingName={selectedPricing.name}
+        selectedTime={selectedTime}
+        date={date}
+      />
     </>
   );
 };

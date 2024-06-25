@@ -33,7 +33,7 @@ interface Availability {
 
 interface MentorProps {
   id: string;
-  user: User[];
+  user: User;
   educations: Educations[];
   specializations: Specializations[];
   availabilities: Availability[];
