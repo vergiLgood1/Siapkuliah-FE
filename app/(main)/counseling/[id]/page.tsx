@@ -79,14 +79,14 @@ const CounselingDetail: React.FC<CounselingDetailProps> = () => {
   return (
     <>
       <MaxWidthWrapper className={cn("max-w-7xl")}>
-        <div className="md:py-40">
-          <div className="grid grid-cols-4 gap-4">
+        <div className="py-32 md:py-40">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="col-span-1">
               <CardInfo />
             </div>
-            <div className="col-span-3 space-y-8">
+            <div className=" col-span-1 md:col-span-3 space-y-8">
               <CardIntroduction />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <CardEducation />
               </div>
               <CardJadwalDanLayanan />

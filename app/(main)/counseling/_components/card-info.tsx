@@ -56,7 +56,7 @@ const CardInfo = () => {
   return (
     <>
       {mentor && (
-        <Card className="max-w-[300px]">
+        <Card className=" max-w-full md:max-w-[300px]">
           <CardHeader className="justify-center items-center">
             <div className="flex flex-col items-center justify-center gap-5">
               <Image

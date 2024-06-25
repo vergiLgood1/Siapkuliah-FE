@@ -19,7 +19,7 @@ const CardIntroduction = () => {
     <>
       {mentor && (
         <Card>
-          <CardHeader className="flex flex-col items-start gap-6">
+          <CardHeader className="flex flex-col items-start md:gap-6">
             <h2 className="text-2xl text-default-900 font-semibold">
               Detail Counselor
             </h2>

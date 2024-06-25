@@ -20,12 +20,22 @@ interface CheckoutProps {
   is_completed: boolean;
 }
 
+interface CheckoutSessionRequest {
+    price_id: string;
+    quantity: number;
+  }
+  
+  interface CheckoutSessionResponse {
+    id: string;
+  }
+
 const CheckoutApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        checkout: builder.mutation<CheckoutProps, void>({
-            query: () => ({
+        checkout: builder.mutation<CheckoutSessionResponse, CheckoutSessionRequest>({
+            query: (body) => ({
                 url: "/create-checkout-session/",
                 method: "POST",
+                body,
             }),
         }),
     }),

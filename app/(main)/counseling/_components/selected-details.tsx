@@ -1,3 +1,4 @@
+import CheckoutButton from "@/app/[payment]/checkout/page";
 import { Button } from "@/components/ui/button";
 import { useDateSelection } from "@/hooks/counseling-details/use-date-selection";
 import { usePricingSelection } from "@/hooks/counseling-details/use-pricing-selection";
@@ -30,9 +31,7 @@ const SelectedDetails: React.FC<SelectedDetailsProps> = ({
             </small>
           </div>
         </div>
-        <Link href="" className="flex items-center justify-center">
-          <Button>Buat janji</Button>
-        </Link>
+        <CheckoutButton/>
       </nav>
     </>
   );
